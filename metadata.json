@@ -1,0 +1,6 @@
+{
+  "name": "Allstate Group",
+  "description": "An elegant, modern corporate presentation portal for the Allstate Group, containing comprehensive details of its history, ethos, multi-company group structure, services, and interactive contact channels.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
