@@ -31,7 +31,7 @@ jobs:
        # 5. Deploy react folder to another repo
       - name: Deploy react folder
         env:
-          TARGET_REPO: git@github.com/creoelementsllp/demoHttp.git
+          TARGET_REPO: git@github.com:creoelementsllp/demoHttp.git
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           # Start ssh-agent and add the deploy key
@@ -54,7 +54,8 @@ jobs:
           rm -rf ./*
 
           # Copy new react build
-          cp -r ../react/* .
+          cp -r ../dist/* .
+          # cp -r ../react/* .
 
           # Commit and push
           git add .
