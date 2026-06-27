@@ -32,8 +32,7 @@ jobs:
       - name: Deploy react folder
         env:
           TARGET_REPO: git@github.com:creoelementsllp/demoHttp.git
-          DEPLOY_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILfsB9Bspcxin4YKu12tSDAw/LM/pMQm3V7/cgPxG0dm github-actions
-
+          DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
         run: |
           # Start ssh-agent and add the deploy key
           eval "$(ssh-agent -s)"
