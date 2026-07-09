@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x  
+          node-version: 20.x
           cache: 'npm'
 
       # 3. Install dependencies
@@ -28,7 +28,8 @@ jobs:
       # 4. Build project
       - name: Build project
         run: npm run build
-       # 5. Deploy react folder to another repo
+
+      # 5. Deploy react folder to another repo
       - name: Deploy react folder
         env:
           TARGET_REPO: git@github.com:creoelementsllp/demoHttp.git
@@ -38,9 +39,9 @@ jobs:
           eval "$(ssh-agent -s)"
           echo "$DEPLOY_KEY" | tr -d '\r' | ssh-add -
 
-          # Disable host key checking for GitHub (optional, prevents prompts)
+          # Trust GitHub's host key
           mkdir -p ~/.ssh
-          echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
 
           # Configure git author
           git config --global user.name "GitHub Actions"
@@ -55,7 +56,6 @@ jobs:
 
           # Copy new react build
           cp -r ../dist/* .
-          # cp -r ../react/* .
 
           # Commit and push
           git add .
