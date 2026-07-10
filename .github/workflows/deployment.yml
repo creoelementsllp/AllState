@@ -29,7 +29,15 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # 5. Deploy react folder to another repo
+      # 4.5 Debug: show what actually got built
+      - name: List dist contents
+        run: |
+          echo "----- dist -----"
+          ls -la dist
+          echo "----- dist/assets -----"
+          ls -la dist/assets
+
+      # 5. Deploy build folder to another repo
       - name: Deploy react folder
         env:
           TARGET_REPO: git@github.com:creoelementsllp/demoHttp.git
@@ -51,13 +59,19 @@ jobs:
           git clone $TARGET_REPO deploy-repo
           cd deploy-repo
 
-          # Remove old content
-          rm -rf ./*
+          # Remove ALL old content, but keep the .git folder itself
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-          # Copy new react build
-          cp -r ../dist/* .
+          # Copy new build, including any hidden/dotfiles (trailing /. matters)
+          cp -r ../dist/. .
+
+          # Debug: confirm what actually got copied into the deploy repo
+          echo "----- deploy-repo contents after copy -----"
+          ls -la
+
+          # Force-add everything, bypassing any .gitignore rules in this repo
+          git add -Af .
 
           # Commit and push
-          git add .
           git commit -m "Deploy React build from main repo" || echo "Nothing to commit"
           git push origin main
