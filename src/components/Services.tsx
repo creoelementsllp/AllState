@@ -11,7 +11,7 @@ function getIcon(name: string) {
   const Icon = (LucideIcons as Record<string, ComponentType<{ size?: number; className?: string }>>)[name];
   return Icon ? <Icon size={24} /> : null;
 }
-
+//  neews
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
 
