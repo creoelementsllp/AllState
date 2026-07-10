@@ -61,7 +61,7 @@ export default function About() {
       {/* ── Top hairline ── */}
       <div style={{ height: 1, background: RULE }} />
 
-       
+        {/* hiui */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-0">
         <div className="grid lg:grid-cols-[1fr_420px] gap-12 lg:gap-20 items-start">
 
