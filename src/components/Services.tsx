@@ -60,7 +60,7 @@ export default function Services() {
               className="service-card premium-card p-8 light-sweep group border-glow"
             >
               <div className="flex items-start gap-5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white flex-shrink-0 group-hover:scale-110 transition-transform duration-500">
+                <div className="w-12 h-12 rounded-xl bg-linear-to-br from-primary to-accent flex items-center justify-center text-white shrink-0 group-hover:scale-110 transition-transform duration-500">
                   {getIcon(obj.iconName)}
                 </div>
                 <div>
