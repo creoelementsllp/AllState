@@ -163,7 +163,7 @@ export default function About() {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 6,
+                    gap: 4,
                     padding: '7px 14px',
                     borderRadius: 999,
                     border: `1px solid ${RULE}`,
